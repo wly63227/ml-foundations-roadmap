@@ -35,3 +35,5 @@ macOS/Linux 把 `.venv/Scripts/python.exe` 换为 `.venv/bin/python`。浏览器
 `教材/docs/` 是唯一正文；`教材/scripts/` 保存构建、检查及自编实验；`教材/site/`、`教材/reports/` 为生成目录，不提交。所有周计划和打卡均从未完成开始。网页上的复选框用于呈现记录，不会自动保存或同步 GitHub；请修改 Markdown 后提交。
 
 `main` 更新后，Actions 执行数学、实验、链接与构建检查，再发布 Pages；`version.json` 标识线上提交。本仓库只发布原创学习组织、说明、自编练习及代码，不包含原始课件和参考书。不将本计划解释为教师教学范围或算法岗就业保证。
+
+部署成功后，可用 `python 教材/scripts/check_public.py --expected-commit COMMIT_SHA --external` 核对线上版本、全部正文页面和资源外链；将 `COMMIT_SHA` 替换为该次提交的完整 SHA。检查结果保存在 `教材/reports/public.json`。

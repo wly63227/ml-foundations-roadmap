@@ -28,6 +28,7 @@ for(const [i,e] of entries.entries()){
  const renderer=new marked.Renderer();
  renderer.heading=function({tokens,depth}){let label=this.parser.parseInline(tokens),id=label.match(/\s*\{#([^}]+)\}$/)?.[1];label=label.replace(/\s*\{#[^}]+\}$/,'');id??=slug(label);if(ids.has(id))throw new Error(`Duplicate heading ${e.rel}#${id}`);ids.add(id);headings.push({depth,label,id});return `<h${depth} id="${esc(id)}">${label}<a class="anchor" href="#${esc(id)}" aria-label="本节链接">#</a></h${depth}>`;};
  let body=marked.parse(source,{renderer,gfm:true}).replace(/MATHTOKEN(\d+)END/g,(_,n)=>math[Number(n)]).replace(/href="([^"#?]*?)\.md(#[^"]*)?"/g,(_,name,anchor)=>`href="${name}.html${anchor??''}"`).replaceAll('<table>','<div class="table-scroll" tabindex="0" role="region" aria-label="可横向滚动的表格"><table>').replaceAll('</table>','</table></div>');
+ body=body.replace(/<p>(<img\b[^>]*>)<\/p>/g,'<div class="figure-scroll" tabindex="0" role="region" aria-label="可横向滚动的图形">$1</div>');
  const nav=entries.map(x=>`<a ${x===e?'aria-current="page"':''} class="${x.rel.startsWith('weeks/')?'week-link':''}" href="${prefix+x.url}">${esc(x.title)}</a>`).join('');
  const toc=headings.filter(h=>h.depth===2).map(h=>`<a href="#${esc(h.id)}">${h.label}</a>`).join('');
  const prev=entries[i-1],next=entries[i+1];
