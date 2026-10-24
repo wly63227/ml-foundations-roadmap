@@ -1,0 +1,10 @@
+node_modules/
+教材/site/
+教材/reports/
+.work/
+.venv/
+__pycache__/
+*.pyc
+*.pdf
+*.zip
+.env*

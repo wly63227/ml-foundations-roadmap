@@ -1,0 +1,11 @@
+{
+  "name": "ml-foundations-roadmap",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node 教材/scripts/build.mjs",
+    "check": "node 教材/scripts/check.mjs"
+  },
+  "dependencies": {"marked": "15.0.12", "katex": "0.16.22"}
+}
